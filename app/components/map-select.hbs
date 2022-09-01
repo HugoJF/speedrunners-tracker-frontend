@@ -1,0 +1,8 @@
+<select
+  class="{{join "px-4 py-2 bg-white border rounded" @class}}"
+>
+  <option>=== Selecione o mapa ===</option>
+  {{#each-in this.maps as |key name|}}
+    <option value="{{key}}" selected={{eq @value key}}>{{name}}</option>
+  {{/each-in}}
+</select>

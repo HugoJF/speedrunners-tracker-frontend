@@ -1,0 +1,92 @@
+{
+  "uuid": "615bcf3d-8aa3-438e-a132-8c73516d9a8d",
+  "lastMigration": 22,
+  "name": "Speedrunners tracker",
+  "endpointPrefix": "",
+  "latency": 0,
+  "port": 3001,
+  "hostname": "0.0.0.0",
+  "routes": [
+    {
+      "uuid": "dad96ac2-ddc6-4821-8d1a-4fa076f581a0",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "by-map",
+      "responses": [
+        {
+          "uuid": "31c828a1-b21b-46ba-bdba-33bf9ebfb237",
+          "body": "{\n  \"ss-royale\": {\n    \"denerd-score\": 24,\n    \"chase-score\": 33,\n  },\n}",
+          "latency": 200,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "99bc1d63-51f7-4d76-ae51-1dd50872b8b7",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "by-map/:map",
+      "responses": [
+        {
+          "uuid": "b39a4a5b-2e23-4abf-a915-9f31cd028e6f",
+          "body": "{\n  \"name\": \"SS Royale\",\n  \"denerd-score\": 33,\n  \"chase-score\": 43,\n  \"history\": [{\n    \"created_at\": \"2022-08-22T15:50:37.459Z\"\n    \"denerd-score\": 3,\n    \"chase-score\": 0,\n  }]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ]
+}

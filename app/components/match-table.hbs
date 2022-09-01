@@ -1,0 +1,32 @@
+<table>
+  <thead><tr>
+    <td>Map</td>
+    <td>de_nerd score</td>
+    <td>chase score</td>
+    <td>Date</td>
+    <td>Actions</td>
+  </tr></thead>
+  <tbody>
+  {{#each @matches as |match|}}
+    <tr>
+      <td>
+        <LinkTo class="hover:underline" @route="matches.map.show" @model={{match.map}}>
+          {{map-name match.map}}
+        </LinkTo>
+      </td>
+      <td>{{match.denerd_score}}</td>
+      <td>{{match.chase_score}}</td>
+      <td title={{match.created_at}}>
+        <LinkTo class="hover:underline" @route="matches.date.show" @model={{this.toDate match.created_at}}>
+          {{date-to-human-readable match.created_at}}
+        </LinkTo>
+      </td>
+      <td>
+        <Button @size="sm" {{on "click" (fn this.handleEdit match)}}>
+          Edit
+        </Button>
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

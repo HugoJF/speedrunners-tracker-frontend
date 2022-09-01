@@ -1,0 +1,23 @@
+<div ...attributes>
+  <div class="flex justify-between">
+    <span class="mt-4">{{this.leftPercent}}%</span>
+    <h2 class="text-xl font-medium">{{@title}}</h2>
+    <span class="mt-4">{{this.rightPercent}}%</span>
+  </div>
+
+  <div class="flex h-4 items-stretch">
+    <span
+      class="bg-blue-500 rounded-l" style="width: {{this.leftPercent}}%"
+      title="denerd score: {{@leftScore}}"
+    ></span>
+    <span
+      class="flex-grow bg-red-500 rounded-r"
+      title="chase score: {{@rightScore}}"
+    ></span>
+  </div>
+
+  <div class="flex justify-between items-end">
+    <span class="font-medium text-blue-600">{{@left}}</span>
+    <span class="font-medium text-red-600">{{@right}}</span>
+  </div>
+</div>

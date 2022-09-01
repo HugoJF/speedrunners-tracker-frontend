@@ -1,7 +1,48 @@
-{{page-title "SpeedrunnersTracker"}}
+{{page-title "Speedrunners Tracker"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+{{#if this.matchModal.visible}}
+  <MatchForm
+    @onSaved={{this.handleOnSaved}}
+  />
+{{/if}}
 
-{{outlet}}
+<nav class="flex flex-col gap-8 fixed inset-y-0 left-0 w-[16rem] bg-gray-900 text-white shadow-lg">
+  <LinkTo @route="index" class="block p-8 pb-0">
+    <img src="/images/speedrunners.png" alt="Speedrunners">
+  </LinkTo>
+  <div class="flex flex-col gap-4 mx-6 p-4 bg-gray-800 rounded-lg select-none" title="Score for today">
+    <div class="flex justify-between items-end">
+      <div class="flex flex-col items-center">
+        <span class="mb-1 text-gray-300 text-sm font-medium uppercase">denerd</span>
+        <span class="text-5xl">{{this.dailyStats.denerd_score}}</span>
+      </div>
+      <span class="text-gray-300 text-5xl font-thin">:</span>
+      <div class="flex flex-col items-center">
+        <span class="mb-1 text-gray-300 text-sm font-medium uppercase">chase</span>
+        <span class="text-5xl">{{this.dailyStats.chase_score}}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-6">
+    <Button
+      class="w-full"
+      @color="primary"
+      @size="sm"
+      {{on "click" this.handleModalOpen}}
+    >
+      Nova partida
+    </Button>
+  </div>
+
+  <div class="flex flex-col">
+    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.index">Matches</LinkTo>
+    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.map.index">By map</LinkTo>
+    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.date.index">By date
+    </LinkTo>
+  </div>
+</nav>
+
+<Container>
+  {{outlet}}
+</Container>

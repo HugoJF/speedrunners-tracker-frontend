@@ -1,0 +1,27 @@
+<li class="hover:bg-gray-100 group border rounded">
+  <div class="px-8 pt-4 flex justify-between">
+    <span class="block text-lg font-medium tracking-tight uppercase">{{map-name @match.map}}</span>
+  </div>
+
+  <div class="py-4 flex justify-center items-center gap-8">
+    <span>denerd</span>
+    <div class="flex items-center gap-4 px-4 py-2 text-white bg-gray-400 rounded">
+      <span class="text-4xl font-light">{{@match.denerd_score}}</span>
+      <span class="text-gray-200">-</span>
+      <span class="text-4xl font-light">{{@match.chase_score}}</span>
+    </div>
+    <span>chase</span>
+  </div>
+
+  <div class="flex justify-between px-8 pb-4 pt-4 text-sm border-t bg-gray-100 group-hover:bg-gray-200">
+    <span>
+      {{this.createdAtToHumans}}
+    </span>
+    <button
+      class="hidden group-hover:block px-2 bg-gray-500 hover:bg-gray-600 text-white rounded"
+      type="button"
+    >
+      EDIT
+    </button>
+  </div>
+</li>

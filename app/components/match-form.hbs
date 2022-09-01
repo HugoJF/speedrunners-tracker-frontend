@@ -1,0 +1,59 @@
+<Portal>
+  <Modal @onClose={{this.closeModal}}>
+    <:header>
+      <h2 class="text-lg font-medium">Cadastro de partida</h2>
+      <span></span>
+    </:header>
+    <:default>
+      <div class="flex flex-col gap-2">
+        <label class="font-medium">Pontuação</label>
+        <div class="flex justify-between items-center">
+          <ScoreInput @value={{this.matchModal.model.denerd_score}} @onChange={{this.handleDenerdScore}}/>
+          <h2>nerd x chase</h2>
+          <ScoreInput @value={{this.matchModal.model.chase_score}} @onChange={{this.handleChaseScore}}/>
+        </div>
+        <p class="text-sm text-red-600 font-medium">{{this.errors.global}}</p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="date" class="font-medium">Data da partida</label>
+        <input
+          id="date"
+          class="px-4 py-2 border rounded"
+          type="datetime-local"
+          value="{{date-to-datetime-local this.form.created_at}}"
+          {{on "change" this.handleCreatedAtChange}}
+        />
+        <p class="text-sm text-red-600 font-medium">{{this.errors.date}}</p>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label class="font-medium">Seleção de mapa</label>
+        <MapSelect
+          @onSelect={{this.handleMapSelection}}
+          @class="{{if this.errors.map "border-red-600"}}"
+          @value={{this.matchModal.model.map}}
+        />
+        <p class="text-sm text-red-600 font-medium">{{this.errors.map}}</p>
+      </div>
+    </:default>
+    <:footer>
+      <ButtonGroup>
+        <Button
+          @color="default"
+          @size="sm"
+          {{on "click" this.handleSaveAndContinue}}
+        >
+          Salvar mais uma
+        </Button>
+        <Button
+          @color="primary"
+          @size="sm"
+          {{on "click" this.handleSave}}
+        >
+          Salvar
+        </Button>
+      </ButtonGroup>
+    </:footer>
+  </Modal>
+</Portal>

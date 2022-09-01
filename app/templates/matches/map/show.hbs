@@ -1,0 +1,12 @@
+<h1>Latest matches on {{this.mapName}}</h1>
+
+<ComparativeBar
+  @title="Win-rate on {{this.mapName}}"
+  @left="denerd"
+  @leftScore={{this.denerdWins.length}}
+  @right="chase"
+  @rightScore={{this.chaseWins.length}}
+  class="mb-8"
+/>
+
+<MatchTable @matches={{this.model}} />

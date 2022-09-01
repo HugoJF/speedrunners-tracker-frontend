@@ -1,0 +1,19 @@
+<Portal>
+  <div
+    class="z-10 fixed inset-0 bg-black opacity-25"
+    {{on "click" this.handleClick}}
+  ></div>
+  <div class="pl-[16rem] fixed inset-0 flex items-center justify-center pointer-events-none z-10">
+    <div class="w-[32rem] border rounded shadow-md pointer-events-auto">
+      <header class="flex justify-between p-4 bg-gray-50 rounded-t">
+        {{yield to="header"}}
+      </header>
+      <section class="flex flex-col gap-4 p-4 bg-white">
+        {{yield}}
+      </section>
+      <footer class="flex justify-end p-4 bg-gray-50 border-t rounded-b">
+        {{yield to="footer"}}
+      </footer>
+    </div>
+  </div>
+</Portal>

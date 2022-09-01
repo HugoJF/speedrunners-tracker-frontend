@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'speedrunners-tracker',
+    modulePrefix: 'speedrunners-tracker-frontend',
     environment,
     rootURL: '/',
     locationType: 'history',
@@ -20,6 +20,7 @@ module.exports = function (environment) {
   };
 
   if (environment === 'development') {
+    ENV.APP.API_HOSTNAME = 'http://localhost:3000';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -40,7 +41,7 @@ module.exports = function (environment) {
   }
 
   if (environment === 'production') {
-    // here you can enable a production-specific feature
+    ENV.APP.API_HOSTNAME = 'https://speedrunners.aws.hugo.dev.br';
   }
 
   return ENV;
