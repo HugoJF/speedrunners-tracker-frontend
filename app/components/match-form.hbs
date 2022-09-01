@@ -30,7 +30,7 @@
       <div class="flex flex-col gap-2">
         <label class="font-medium">Seleção de mapa</label>
         <MapSelect
-          @onSelect={{this.handleMapSelection}}
+          @onChange={{this.handleMapSelection}}
           @class="{{if this.errors.map "border-red-600"}}"
           @value={{this.matchModal.model.map}}
         />
