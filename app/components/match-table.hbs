@@ -22,9 +22,14 @@
         </LinkTo>
       </td>
       <td>
-        <Button @size="sm" {{on "click" (fn this.handleEdit match)}}>
-          Edit
-        </Button>
+        <ButtonGroup>
+          <Button @size="sm" {{on "click" (fn this.handleEdit match)}}>
+            Edit
+          </Button>
+          <Button @size="sm" @color="red" {{on "click" (fn this.handleDelete match)}}>
+            Delete
+          </Button>
+        </ButtonGroup>
       </td>
     </tr>
   {{/each}}
