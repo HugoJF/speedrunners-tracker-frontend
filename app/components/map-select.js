@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { maps } from '../utils/maps';
-import {action} from "@ember/object";
-import {safeInvoke} from "../utils/functions";
+import { action } from '@ember/object';
+import { safeInvoke } from '../utils/functions';
 
 export default class MapSelectComponent extends Component {
   maps = maps;

@@ -1,6 +1,6 @@
-import {action} from '@ember/object';
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import {maps} from '../utils/maps';
+import { maps } from '../utils/maps';
 
 export default class MapSelectionComponent extends Component {
   get mapKeys() {

@@ -41,7 +41,7 @@ export default class MatchFormComponent extends Component {
   @action
   handleMapSelection(map) {
     this.matchModal.model.map = map;
-    console.log({map})
+    console.log({ map });
   }
 
   @action

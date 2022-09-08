@@ -1,7 +1,9 @@
-<button
-  class="{{this.classes}}"
-  type="button"
-  ...attributes
->
+{{#if (eq @type 'link')}}
+<LinkTo class="{{this.classes}}" @route={{@route}} @model={{@model}} ...attributes>
+  {{yield}}
+</LinkTo>
+{{else}}
+<button class="{{this.classes}}" type="button" ...attributes>
   {{yield}}
 </button>
+{{/if}}
