@@ -7,6 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('sprints', function () {
+    this.route('index', { path: '/' });
+  });
+
   this.route('matches', function () {
     this.route('date', function () {
       this.route('index', { path: '/' });

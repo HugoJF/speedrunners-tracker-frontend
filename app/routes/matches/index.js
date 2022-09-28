@@ -5,6 +5,7 @@ export default class MatchesIndexRoute extends Route {
   @service store;
 
   model() {
-    return this.store.findAll('match');
+    // TODO
+    // return this.store.findAll('match');
   }
 }

@@ -6,6 +6,16 @@
     </:header>
     <:default>
       <div class="flex flex-col gap-2">
+        <label class="font-medium">Sprint</label>
+        <SprintSelect
+          @onChange={{this.handleSprintSelection}}
+          @class="{{if this.errors.map "border-red-600"}}"
+          @value={{this.matchModal.model.sprint}}
+        />
+        <p class="text-sm text-red-600 font-medium">{{this.errors.sprint}}</p>
+      </div>
+
+      <div class="flex flex-col gap-2">
         <label class="font-medium">Pontuação</label>
         <div class="flex justify-between items-center">
           <ScoreInput @value={{this.matchModal.model.denerd_score}} @onChange={{this.handleDenerdScore}}/>

@@ -1,0 +1,14 @@
+<select
+  class="{{join "px-4 py-2 bg-white border rounded" @class}}"
+  {{on "change" this.handleOnChange}}
+>
+  <option>=== Selecione a sprint ===</option>
+  {{#each-in this.sprints as |sprint|}}
+    <option
+      value="{{sprint.id}}"
+      selected={{eq @value sprint.id}}
+    >
+      {{sprint.name}}
+    </option>
+  {{/each-in}}
+</select>

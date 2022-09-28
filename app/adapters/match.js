@@ -8,8 +8,8 @@ export default class MatchAdapter extends RESTAdapter {
     if (query.map) {
       return [this.host, this.urlForMapQuery(query.map)].join('');
     }
-    if (query.date) {
-      return [this.host, this.urlForDateQuery(query.date)].join('');
+    if (query.sprint) {
+      return [this.host, this.urlForSprintQuery(query.sprint)].join('');
     }
   }
 
@@ -17,7 +17,7 @@ export default class MatchAdapter extends RESTAdapter {
     return `/matches/by-map/${map}`;
   }
 
-  urlForDateQuery(date) {
-    return `/matches/by-date/${date}`;
+  urlForSprintQuery(sprint) {
+    return `/matches/by-sprint/${sprint}`;
   }
 }
