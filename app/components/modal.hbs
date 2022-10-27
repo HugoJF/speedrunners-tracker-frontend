@@ -6,7 +6,15 @@
   <div class="pl-[16rem] fixed inset-0 flex items-center justify-center pointer-events-none z-10">
     <div class="w-[32rem] border rounded shadow-md pointer-events-auto">
       <header class="flex justify-between p-4 bg-gray-50 rounded-t">
-        {{yield to="header"}}
+        <div>
+          {{yield to="header"}}
+        </div>
+        <div
+          class="p-1 text-gray-700 hover:bg-gray-100 cursor-pointer rounded cursor"
+          {{on "click" @onClose}}
+        >
+          <Icon @name="x"/>
+        </div>
       </header>
       <section class="flex flex-col gap-4 p-4 bg-white">
         {{yield}}

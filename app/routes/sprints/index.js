@@ -1,10 +1,10 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-export default class MatchesIndexRoute extends Route {
+export default class SprintsIndexRoute extends Route {
   @service store;
 
   model() {
-    return this.store.findAll('match');
+    return this.store.findAll('sprint');
   }
 }

@@ -1,0 +1,14 @@
+{{page-title this.model.sprint.anem}}
+
+<h1>Matches on sprint {{this.model.sprint.name}}</h1>
+
+<ComparativeBar
+  @title="Win-rate on sprint {{this.model.sprint.name}}"
+  @left="denerd"
+  @leftScore={{this.model.sprint.p1_score}}
+  @right="chase"
+  @rightScore={{this.model.sprint.p2_score}}
+  class="mb-8"
+/>
+
+<MatchTable @matches={{this.model.matches}} />

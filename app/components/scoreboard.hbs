@@ -1,0 +1,22 @@
+<div class="flex flex-col gap-4 mx-6 py-2 px-4 bg-gray-800 rounded-lg select-none" title="Score for today">
+  {{#if @sprint}}
+    <div>
+      <h2 class="text-gray-400 text-[12px] text-center tracking-tight uppercase">
+        {{@sprint.name}}
+      </h2>
+      <div class="flex justify-between items-end">
+        <div class="flex flex-col items-center">
+          <span class="mb-1 text-gray-300 text-sm font-medium uppercase">{{@sprint.p1_name}}</span>
+          <span class="text-5xl">{{@sprint.p1_score}}</span>
+        </div>
+        <span class="text-gray-300 text-5xl font-thin">:</span>
+        <div class="flex flex-col items-center">
+          <span class="mb-1 text-gray-300 text-sm font-medium uppercase">{{@sprint.p2_name}}</span>
+          <span class="text-5xl">{{@sprint.p2_score}}</span>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <h2 class="text-gray-300 text-center text-sm font-medium uppercase">No sprint selected</h2>
+  {{/if}}
+</div>

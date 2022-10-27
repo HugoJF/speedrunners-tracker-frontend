@@ -1,7 +1,7 @@
 <Portal>
   <Modal @onClose={{this.closeModal}}>
     <:header>
-      <h2 class="text-lg font-medium">Cadastro de partida</h2>
+      <h2 class="text-lg font-medium">Creating new match</h2>
       <span></span>
     </:header>
     <:default>
@@ -9,36 +9,31 @@
         <label class="font-medium">Sprint</label>
         <SprintSelect
           @onChange={{this.handleSprintSelection}}
-          @class="{{if this.errors.map "border-red-600"}}"
-          @value={{this.matchModal.model.sprint}}
+          @class="{{if this.errors.sprint_id "border-red-600"}}"
+          @value={{this.matchModal.model.sprint_id}}
         />
-        <p class="text-sm text-red-600 font-medium">{{this.errors.sprint}}</p>
+        <p class="text-sm text-red-600 font-medium">{{this.errors.sprint_id}}</p>
+        <a
+          class="text-gray-700 text-right text-sm underline cursor-pointer"
+          {{on "click" this.handleCreateNewSprint}}
+        >
+          Create new sprint
+        </a>
       </div>
 
       <div class="flex flex-col gap-2">
-        <label class="font-medium">Pontuação</label>
+        <label class="font-medium">Score</label>
         <div class="flex justify-between items-center">
-          <ScoreInput @value={{this.matchModal.model.denerd_score}} @onChange={{this.handleDenerdScore}}/>
-          <h2>nerd x chase</h2>
-          <ScoreInput @value={{this.matchModal.model.chase_score}} @onChange={{this.handleChaseScore}}/>
+          <ScoreInput @value={{this.matchModal.model.p1_score}} @onChange={{this.handleP1Score}}/>
+          <!-- TODO get from sprint -->
+          <h2>{{this.currentSprint.current.p1_name}} x {{this.currentSprint.current.p2_name}}</h2>
+          <ScoreInput @value={{this.matchModal.model.p2_score}} @onChange={{this.handleP2Score}}/>
         </div>
         <p class="text-sm text-red-600 font-medium">{{this.errors.global}}</p>
       </div>
 
       <div class="flex flex-col gap-2">
-        <label for="date" class="font-medium">Data da partida</label>
-        <input
-          id="date"
-          class="px-4 py-2 border rounded"
-          type="datetime-local"
-          value="{{date-to-datetime-local this.form.created_at}}"
-          {{on "change" this.handleCreatedAtChange}}
-        />
-        <p class="text-sm text-red-600 font-medium">{{this.errors.date}}</p>
-      </div>
-
-      <div class="flex flex-col gap-2">
-        <label class="font-medium">Seleção de mapa</label>
+        <label class="font-medium">Map selection</label>
         <MapSelect
           @onChange={{this.handleMapSelection}}
           @class="{{if this.errors.map "border-red-600"}}"
@@ -54,14 +49,14 @@
           @size="sm"
           {{on "click" this.handleSaveAndContinue}}
         >
-          Salvar mais uma
+          Save and continue
         </Button>
         <Button
           @color="primary"
           @size="sm"
           {{on "click" this.handleSave}}
         >
-          Salvar
+          Save
         </Button>
       </ButtonGroup>
     </:footer>

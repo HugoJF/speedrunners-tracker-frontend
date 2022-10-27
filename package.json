@@ -28,6 +28,7 @@
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "autoprefixer": "^10.4.8",
+    "axios": "^1.0.0",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^2.4.2",
@@ -43,6 +44,7 @@
     "ember-data": "^4.4.1",
     "ember-fetch": "^8.1.1",
     "ember-load-initializers": "^2.1.2",
+    "ember-modifier": "^3.2.7",
     "ember-page-title": "^7.0.0",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
@@ -75,6 +77,8 @@
     "@types/ember-data__model": "^4.0.0",
     "@types/ember-data__serializer": "^4.0.0",
     "@types/ember__object": "^4.0.4",
-    "date-fns": "^2.29.2"
+    "date-fns": "^2.29.2",
+    "feather-icons": "^4.29.0",
+    "tracked-built-ins": "^3.1.0"
   }
 }

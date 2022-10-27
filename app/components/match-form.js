@@ -5,37 +5,37 @@ import {
   validateMap,
   validateScore,
   validateScores,
+  validateSprintId,
 } from '../utils/validation';
 import { service } from '@ember/service';
-import { safeInvoke } from '../utils/functions';
 
 export default class MatchFormComponent extends Component {
   @tracked errors = {};
 
   @service matchModal;
+  @service sprintModal;
+  @service currentSprint;
+  @service store;
+  @service notifications;
 
-  constructor() {
-    super(...arguments);
-
-    this.matchModal.model.created_at = new Date().toISOString();
+  @action
+  handleCreateNewSprint() {
+    this.sprintModal.open();
   }
 
   @action
-  handleDenerdScore(denerd_score) {
-    this.matchModal.model.denerd_score = denerd_score;
+  handleSprintSelection(e) {
+    this.matchModal.model.sprint_id = e.target.value;
   }
 
   @action
-  handleChaseScore(chase_score) {
-    this.matchModal.model.chase_score = chase_score;
+  handleP1Score(p1_score) {
+    this.matchModal.model.p1_score = p1_score;
   }
 
   @action
-  handleCreatedAtChange(e) {
-    // Letter Z is added to the end of the date-string to avoid being parsed as a timezoned string
-    this.matchModal.model.created_at = new Date(
-      e.target.value + 'Z'
-    ).toISOString();
+  handleP2Score(p2_score) {
+    this.matchModal.model.p2_score = p2_score;
   }
 
   @action
@@ -49,9 +49,8 @@ export default class MatchFormComponent extends Component {
     if (!this.validate()) {
       return;
     }
-
-    await this.matchModal.save();
-    safeInvoke(this.args.onSaved, this.matchModal.model);
+    const match = await this.matchModal.save();
+    this.notifications.info(`Match ${match.id} created successfully!`)
     this.matchModal.close();
   }
 
@@ -61,8 +60,10 @@ export default class MatchFormComponent extends Component {
       return;
     }
 
-    await this.matchModal.save();
-    safeInvoke(this.args.onSaved, this.matchModal.model);
+    const match = await this.matchModal.save();
+    this.notifications.info(`Match ${match.id} created successfully!`)
+    this.args.onSaved?.(this.matchModal.model);
+    this.matchModal.reset();
   }
 
   @action
@@ -75,12 +76,13 @@ export default class MatchFormComponent extends Component {
     this.errors = {};
 
     const errors = {
-      chase_score: validateScore(this.matchModal.model.chase_score),
-      denerd_score: validateScore(this.matchModal.model.denerd_score),
+      p2_score: validateScore(this.matchModal.model.p2_score),
+      p1_score: validateScore(this.matchModal.model.p1_score),
       map: validateMap(this.matchModal.model.map),
+      sprint_id: validateSprintId(this.matchModal.model.sprint_id),
       global: validateScores(
-        this.matchModal.model.chase_score,
-        this.matchModal.model.denerd_score
+        this.matchModal.model.p1_score,
+        this.matchModal.model.p2_score
       ),
     };
 

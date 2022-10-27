@@ -4,7 +4,6 @@ import { service } from '@ember/service';
 
 export default class MatchesMapIndexController extends Controller {
   @service store;
-  @service dailyStats;
   @service router;
 
   @action

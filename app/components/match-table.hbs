@@ -1,45 +1,55 @@
 <table>
   <thead>
-    <tr>
-      {{#if @showIndex}}
-        <td>Index</td>
-      {{/if}}
-      <td>Map</td>
-      <td>de_nerd score</td>
-      <td>chase score</td>
-      <td>Date</td>
-      <td>Actions</td>
-    </tr>
+  <tr>
+    {{#if @showIndex}}
+      <td>Index</td>
+    {{/if}}
+    <td>Map</td>
+    <td>P1 score</td>
+    <td>P2 score</td>
+    <td>Sprint</td>
+    <td>Date</td>
+    <td>Actions</td>
+  </tr>
   </thead>
   <tbody>
-    {{#each @matches as |match index|}}
-      <tr>
-        {{#if @showIndex}}
-          <td>{{sum index 1}}</td>
-        {{/if}}
-        <td>
-          <LinkTo class="hover:underline" @route="matches.map.show" @model={{match.map}}>
-            {{map-name match.map}}
-          </LinkTo>
-        </td>
-        <td>{{match.denerd_score}}</td>
-        <td>{{match.chase_score}}</td>
-        <td title={{match.created_at}}>
-          <LinkTo class="hover:underline" @route="matches.date.show" @model={{this.toDate match.created_at}}>
-            {{date-to-human-readable match.created_at}}
-          </LinkTo>
-        </td>
-        <td>
-          <ButtonGroup>
-            <Button @size="sm" {{on "click" (fn this.handleEdit match)}}>
-              Edit
-            </Button>
-            <Button @size="sm" @color="red" {{on "click" (fn this.handleDelete match)}}>
-              Delete
-            </Button>
-          </ButtonGroup>
-        </td>
-      </tr>
-    {{/each}}
+  {{#each @matches as |match index|}}
+    <tr>
+      {{#if @showIndex}}
+        <td>{{sum index 1}}</td>
+      {{/if}}
+      <td>
+        <LinkTo class="hover:underline" @route="matches.map.show" @model={{match.map}}>
+          {{map-name match.map}}
+        </LinkTo>
+      </td>
+      <td>{{match.p1_score}}</td>
+      <td>{{match.p2_score}}</td>
+      <td>
+        <LinkTo class="hover:underline" @route="sprints.show" @model={{match.sprint_id}}>
+          {{tail match.sprint_id}}
+        </LinkTo>
+      </td>
+      <td title={{match.created_at}}>
+        {{date-to-human-readable match.created_at}}
+      </td>
+      <td>
+        <ButtonGroup>
+          <Button @size="sm" {{on "click" (fn this.handleEdit match)}}>
+            Edit
+          </Button>
+          <Button @size="sm" @color="red" {{on "click" (fn this.handleDelete match)}}>
+            Delete
+          </Button>
+        </ButtonGroup>
+      </td>
+    </tr>
+  {{else}}
+    <tr>
+      <td colspan="{{if @showIndex 7 6}}" class="text-center">
+        No matches!
+      </td>
+    </tr>
+  {{/each}}
   </tbody>
 </table>

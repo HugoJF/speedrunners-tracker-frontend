@@ -5,7 +5,6 @@ import { action } from '@ember/object';
 export default class MatchTableComponent extends Component {
   @service matchModal;
   @service store;
-  @service dailyStats;
 
   @action
   handleEdit(match) {
@@ -19,9 +18,11 @@ export default class MatchTableComponent extends Component {
     const model = this.store.peekRecord('match', match.id);
 
     await model.destroyRecord();
-    await this.dailyStats.refresh();
+    // TODO configure match relationship to attempt to refresh it directly
+    // await  this.dailyStats.refresh();
   }
 
+  // TODO deprecated?
   toDate(datetime) {
     const iso = new Date(datetime).toISOString();
     const [date] = iso.split('T');

@@ -1,0 +1,52 @@
+<table>
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>P1 name</td>
+    <td>P1 score</td>
+    <td>P2 name</td>
+    <td>P2 score</td>
+    <td>Date</td>
+    <td>Actions</td>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each this.sprints as |sprint|}}
+    <tr>
+      <td class="text-mono tracking-tight" title="{{sprint.id}}">
+        <LinkTo class="hover:underline" @route="sprints.show" @model={{sprint.id}}>
+          {{tail sprint.id}}
+        </LinkTo>
+      </td>
+      <td>{{sprint.name}}</td>
+      <td>{{sprint.p1_name}}</td>
+      <td>{{sprint.p1_score}}</td>
+      <td>{{sprint.p2_name}}</td>
+      <td>{{sprint.p2_score}}</td>
+      <td title={{sprint.created_at}}>
+        {{date-to-human-readable sprint.updated_at}}
+      </td>
+      <td>
+        <ButtonGroup>
+          <!-- TODO hook to modal -->
+          <Button @size="sm" {{on "click" (fn this.handleEdit sprint)}}>
+            Edit
+          </Button>
+          {{#unless (eq sprint.id this.currentId)}}
+            <Button @size="sm" {{on "click" (fn this.handleMakeCurrent sprint)}}>
+              Set current
+            </Button>
+          {{/unless}}
+        </ButtonGroup>
+      </td>
+    </tr>
+  {{else}}
+    <tr>
+      <td colspan="8" class="text-center">
+        No sprints!
+      </td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>

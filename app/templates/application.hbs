@@ -1,49 +1,69 @@
 {{page-title "Speedrunners Tracker"}}
 
 {{#if this.matchModal.visible}}
-  <MatchForm
-    @onSaved={{this.handleOnSaved}}
-  />
+  <MatchForm/>
+{{/if}}
+
+{{#if this.sprintModal.visible}}
+  <SprintForm/>
 {{/if}}
 
 <nav class="flex flex-col gap-8 fixed inset-y-0 left-0 w-[16rem] bg-gray-900 text-white shadow-lg">
   <LinkTo @route="index" class="block p-8 pb-0">
     <img src="/images/speedrunners.png" alt="Speedrunners">
   </LinkTo>
-  <div class="flex flex-col gap-4 mx-6 p-4 bg-gray-800 rounded-lg select-none" title="Score for today">
-    <div class="flex justify-between items-end">
-      <div class="flex flex-col items-center">
-        <span class="mb-1 text-gray-300 text-sm font-medium uppercase">denerd</span>
-        <span class="text-5xl">{{this.dailyStats.denerd_score}}</span>
-      </div>
-      <span class="text-gray-300 text-5xl font-thin">:</span>
-      <div class="flex flex-col items-center">
-        <span class="mb-1 text-gray-300 text-sm font-medium uppercase">chase</span>
-        <span class="text-5xl">{{this.dailyStats.chase_score}}</span>
-      </div>
-    </div>
-  </div>
 
+  <Scoreboard
+    @sprint={{this.currentSprint.current}}
+  />
   <div class="mx-6">
     <Button
       class="w-full"
       @color="primary"
       @size="sm"
+      @icon="plus"
       {{on "click" this.handleModalOpen}}
     >
-      Nova partida
+      New match
     </Button>
   </div>
 
   <div class="flex flex-col">
-    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="sprints.index">Sprints</LinkTo>
-    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.index">Matches</LinkTo>
-    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.map.index">By map</LinkTo>
-    <LinkTo class="px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase" @route="matches.date.index">By date
+    <LinkTo
+      @route="sprints.index"
+      class="{{join
+        'px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase'
+        (if (eq this.router.currentRouteName 'sprints.index') 'bg-gray-800')
+      }}"
+    >
+      Sprints
+    </LinkTo>
+    <LinkTo
+      @route="matches.index"
+      class="{{join
+        'px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase'
+        (if (eq this.router.currentRouteName 'matches.index') 'bg-gray-800')
+      }}"
+    >
+      Matches
+    </LinkTo>
+    <LinkTo
+      @route="matches.map.index"
+      class="{{join
+        'px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase'
+        (if (eq this.router.currentRouteName 'matches.map.index') 'bg-gray-800')
+      }}"
+    >
+      By map
     </LinkTo>
   </div>
 </nav>
 
 <Container>
-  {{outlet}}
+  <:top>
+    <Notifications/>
+  </:top>
+  <:default>
+    {{outlet}}
+  </:default>
 </Container>

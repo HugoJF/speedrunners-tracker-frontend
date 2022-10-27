@@ -5,13 +5,15 @@
     <span class="mt-4">{{this.rightPercent}}%</span>
   </div>
 
-  <div class="flex h-4 items-stretch">
+  <div class="flex h-4 items-stretch bg-gray-100 rounded">
     <span
-      class="bg-blue-500 rounded-l" style="width: {{this.leftPercent}}%"
+      class="bg-blue-500 rounded-l"
+      style="width: {{this.leftPercent}}%"
       title="denerd score: {{@leftScore}}"
     ></span>
     <span
-      class="flex-grow bg-red-500 rounded-r"
+      class="bg-red-500 rounded-r"
+      style="width: {{this.rightPercent}}%"
       title="chase score: {{@rightScore}}"
     ></span>
   </div>

@@ -1,11 +1,12 @@
 <h1>Latest matches on {{this.mapName}}</h1>
 
+<!-- TODO get names from sprint -->
 <ComparativeBar
   @title="Win-rate on {{this.mapName}}"
   @left="denerd"
-  @leftScore={{this.denerdWins.length}}
+  @leftScore={{this.p1Wins.length}}
   @right="chase"
-  @rightScore={{this.chaseWins.length}}
+  @rightScore={{this.p2Wins.length}}
   class="mb-8"
 />
 

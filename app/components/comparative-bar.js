@@ -10,11 +10,11 @@ export default class ComparativeBarComponent extends Component {
   }
 
   get leftPercent() {
-    return this.formatNumber(this.leftScore / this.total());
+    return this.formatNumber(this.leftScore / this.total() || 0);
   }
 
   get rightPercent() {
-    return this.formatNumber(this.rightScore / this.total());
+    return this.formatNumber(this.rightScore / this.total() || 0);
   }
 
   formatNumber(number) {

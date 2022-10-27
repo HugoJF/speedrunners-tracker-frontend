@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 
 export default class ButtonComponent extends Component {
-  base = 'border rounded';
+  base = 'flex gap-2 justify-center items-center border rounded';
   color = {
     primary: 'text-white bg-blue-500 hover:bg-blue-600 border-blue-500',
     dark: 'bg-gray-800 hover:bg-gray-700 border-gray-700',

@@ -1,0 +1,9 @@
+<ul class="pl-[16rem] left-0 top-0 right-0">
+  {{#each-in this.notifications.notifications as |id notification|}}
+    <li class="flex items-center gap-2 p-4 text-white bg-blue-500">
+      <Icon @name="info"/>
+      <span class="flex-grow">{{notification}}</span>
+      <Icon @name="x"/>
+    </li>
+  {{/each-in}}
+</ul>
