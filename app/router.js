@@ -7,6 +7,7 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
+  this.route('steps')
   this.route('sprints', function () {
     this.route('index', { path: '/' });
     this.route('show', { path: ':sprint' });

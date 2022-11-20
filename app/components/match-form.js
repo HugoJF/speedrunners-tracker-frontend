@@ -24,24 +24,23 @@ export default class MatchFormComponent extends Component {
   }
 
   @action
-  handleSprintSelection(e) {
-    this.matchModal.model.sprint_id = e.target.value;
+  handleSprintSelection(sprintId) {
+    this.matchModal.model.sprint_id = sprintId;
   }
 
   @action
-  handleP1Score(p1_score) {
-    this.matchModal.model.p1_score = p1_score;
+  handleP1Score(p1Score) {
+    this.matchModal.model.p1_score = p1Score;
   }
 
   @action
-  handleP2Score(p2_score) {
-    this.matchModal.model.p2_score = p2_score;
+  handleP2Score(p2Score) {
+    this.matchModal.model.p2_score = p2Score;
   }
 
   @action
   handleMapSelection(map) {
     this.matchModal.model.map = map;
-    console.log({ map });
   }
 
   @action
@@ -50,7 +49,7 @@ export default class MatchFormComponent extends Component {
       return;
     }
     const match = await this.matchModal.save();
-    this.notifications.info(`Match ${match.id} created successfully!`)
+    this.notifications.info(`Match ${match.id} created successfully!`);
     this.matchModal.close();
   }
 
@@ -61,7 +60,7 @@ export default class MatchFormComponent extends Component {
     }
 
     const match = await this.matchModal.save();
-    this.notifications.info(`Match ${match.id} created successfully!`)
+    this.notifications.info(`Match ${match.id} created successfully!`);
     this.args.onSaved?.(this.matchModal.model);
     this.matchModal.reset();
   }

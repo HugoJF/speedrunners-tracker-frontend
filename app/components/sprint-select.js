@@ -21,7 +21,7 @@ export default class SprintSelectComponent extends Component {
 
   @action
   handleOnChange(e) {
-    this.args.value = e.target.value;
+    this.args.onChange?.(e.target.value);
   }
 
   async fetchSprints() {

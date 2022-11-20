@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import {TrackedObject} from "tracked-built-ins";
+import { TrackedObject } from 'tracked-built-ins';
 
 let uid = 0;
 

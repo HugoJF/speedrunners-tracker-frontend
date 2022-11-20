@@ -1,4 +1,4 @@
-import {maps} from './maps';
+import { maps } from './maps';
 
 export function validateScores(scoreA, scoreB) {
   if (Math.max(scoreA, scoreB) !== 3) {
