@@ -1,7 +1,12 @@
+'use client'
+
 import './globals.css'
 import React from "react";
 import {RootContainer} from "@/components/root-container";
 import {Navbar} from "@/components/navbar";
+import {Providers} from "@/app/providers";
+import {Modal} from "@/components/modal";
+import {useSprints} from "@/queries/useSprints";
 
 interface Props {
     children: React.ReactNode
@@ -10,16 +15,14 @@ interface Props {
 export default function RootLayout({children}: Props) {
     return (
         <html lang="en">
-        {/*
-            <head /> will contain the components returned by the nearest parent
-            head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
         <head/>
         <body className="min-h-screen">
-        <Navbar/>
-        <RootContainer>
-            {children}
-        </RootContainer>
+        <Providers>
+            <Navbar/>
+            <RootContainer>
+                {children}
+            </RootContainer>
+        </Providers>
         <div id="portal"></div>
         </body>
         </html>

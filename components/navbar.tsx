@@ -1,23 +1,48 @@
+'use client'
+
 import clsx from "clsx";
 import {Button} from "@/components/button";
 import SpeedrunnersLogo from '@/public/speedrunners.png';
 import Image from "next/image";
+import {useCurrentSprint} from "@/queries/useCurrentSprint";
+import {Scoreboard} from "@/components/scoreboard";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+import React, {useState} from "react";
+import {useSprints} from "@/queries/useSprints";
+import {MatchForm} from "@/components/modals/match-form";
 
 export const Navbar = () => {
-    // TODO unmock
-    const currentRoute: string = '';
+    const sprints = useSprints();
+    const pathname = usePathname();
+    const currentSprint = useCurrentSprint();
+    const [modalOpen, setModalOpen] = useState(false);
 
-    return (
+    // TODO improve
+    if (sprints.isLoading) {
+        return 'Loading...'
+    }
+
+    // TODO improve
+    if (!currentSprint) {
+        return 'Loading...';
+    }
+
+    return <>
+        <MatchForm
+            open={modalOpen}
+            sprints={sprints.data?.data}
+            initialSelectedSprintId={currentSprint.id}
+            onClose={() => setModalOpen(false)}
+        />
         <nav className="flex flex-col gap-8 fixed inset-y-0 left-0 w-[16rem] bg-gray-900 text-white shadow-lg">
-            {/* TODO update to Link */}
-            <a className="block p-8 pb-0">
+            <Link href="/" className="block p-8 pb-0">
                 <Image src={SpeedrunnersLogo} alt="Speedrunners logo"/>
-            </a>
+            </Link>
 
-            {/* TODO implement scoreboard */}
-            {/*<Scoreboard*/}
-            {/*    sprint{this.currentSprint.current}*/}
-            {/*/>*/}
+            <Scoreboard
+                sprint={currentSprint}
+            />
 
             <div className="mx-6">
                 <Button
@@ -26,35 +51,35 @@ export const Navbar = () => {
                     size="sm"
                     // TODO feathericons
                     // icon="plus"
-                    // TODO handleClick
-                    // onClick={this.handleModalOpen}
+                    onClick={() => setModalOpen(true)}
                 >
                     New match
                 </Button>
             </div>
 
             <div className="flex flex-col">
-                {/* TODO update to Link */}
-                <a
+                <Link
+                    href="/sprints"
                     className={clsx('px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase', {
-                        'bg-gray-800': currentRoute === 'sprints.index',
+                        'bg-gray-800': pathname === '/sprints',
                     })}
                 >Sprints
-                </a>
+                </Link>
 
-                <a
+                <Link
+                    href="/matches"
                     className={clsx('px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase', {
-                        'bg-gray-800': currentRoute === 'matches.index',
+                        'bg-gray-800': pathname === '/matches',
                     })}
-                >Matches</a>
+                >Matches</Link>
 
-                <a
+                <Link
+                    href="/matches/by-map"
                     className={clsx('px-6 py-6 text-lg font-medium hover:bg-gray-700 uppercase', {
-                        'bg-gray-800': currentRoute === 'matches.map.index',
+                        'bg-gray-800': pathname === '/matches/by-map', // TODO fix
                     })}
-                >By map</a>
+                >By map</Link>
             </div>
         </nav>
-    )
-
+    </>
 }
