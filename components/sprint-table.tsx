@@ -62,7 +62,7 @@ export const SprintTable: FC<Props> = ({sprints, showIndex}) => {
                         {sprint.id !== currentSprint?.id && <Button
                           size="sm"
                           onClick={() => handleSetCurrentSprint(sprint)}
-                          loading={setCurrentSprint.isLoading}
+                          loading={sprint.id === currentSprint?.id && setCurrentSprint.isLoading}
                         >
                           Set current
                         </Button>}

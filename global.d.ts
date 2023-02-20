@@ -21,7 +21,7 @@ type Sprint = SprintComputed & SprintProperties;
 type MatchComputed = HasId & Timestamps;
 type MatchProperties = {
     sprint_id: string;
-    map: string;
+    map: string; // TODO type
     p1_score: number;
     p2_score: number;
 }
@@ -31,3 +31,6 @@ interface ModalProps {
     open?: boolean;
     onClose?: () => void;
 }
+
+// https://stackoverflow.com/questions/53050011/remove-null-or-undefined-from-properties-of-a-type
+type NonNullable<T> = Exclude<T, null | undefined>;

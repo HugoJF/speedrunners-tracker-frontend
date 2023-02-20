@@ -11,6 +11,7 @@ import {usePathname} from "next/navigation";
 import React, {useState} from "react";
 import {useSprints} from "@/queries/useSprints";
 import {MatchForm} from "@/components/modals/match-form";
+import {Plus} from "react-feather";
 
 export const Navbar = () => {
     const sprints = useSprints();
@@ -49,8 +50,7 @@ export const Navbar = () => {
                     className="w-full"
                     color="primary"
                     size="sm"
-                    // TODO feathericons
-                    // icon="plus"
+                    icon={Plus}
                     onClick={() => setModalOpen(true)}
                 >
                     New match
