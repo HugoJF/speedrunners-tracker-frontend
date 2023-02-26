@@ -1,10 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import axios from "axios";
+import {index} from "@/http";
 
 function createMatch(data: MatchProperties) {
-    return axios.post('/matches', data, {
-        baseURL: 'http://localhost:9000',
-    })
+    return index.post('/matches', data)
 }
 
 export const useCreateMatch = () => {

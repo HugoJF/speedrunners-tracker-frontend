@@ -1,10 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import axios from "axios";
+import {index} from "@/http";
 
 function createSprint(data: SprintProperties) {
-    return axios.post('/sprints', data, {
-        baseURL: 'http://localhost:9000',
-    })
+    return index.post('/sprints', data)
 }
 
 export const useCreateSprint = () => {

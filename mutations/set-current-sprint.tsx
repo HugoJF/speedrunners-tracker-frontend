@@ -1,10 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import axios from "axios";
+import {index} from "@/http";
 
 function setCurrentSprint(id: string) {
-    return axios.post('/sprints/current', {id}, {
-        baseURL: 'http://localhost:9000',
-    })
+    return index.post('/sprints/current', {id})
 }
 
 export const useSetCurrentSprint = () => {
