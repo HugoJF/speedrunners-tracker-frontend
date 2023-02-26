@@ -25,7 +25,7 @@ export const Navbar = () => {
     }
 
     // TODO improve
-    if (!currentSprint) {
+    if (currentSprint === undefined) {
         return 'Loading...';
     }
 

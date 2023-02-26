@@ -12,9 +12,9 @@ function fetchCurrentSprint() {
 export const useCurrentSprint = () => {
     const query = useQuery(['sprint', 'current'], () => fetchCurrentSprint())
 
-    if (query.isLoading || !query.data) {
-        return null;
+    if (query.isLoading) {
+        return undefined;
     }
 
-    return query.data.data;
+    return query.data!.data;
 }
