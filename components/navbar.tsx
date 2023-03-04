@@ -21,12 +21,12 @@ export const Navbar = () => {
 
     // TODO improve
     if (sprints.isLoading) {
-        return 'Loading...'
+        return <>Loading...</>
     }
 
     // TODO improve
     if (currentSprint === undefined) {
-        return 'Loading...';
+        return <>Loading...</>;
     }
 
     return <>
