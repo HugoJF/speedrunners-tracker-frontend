@@ -13,6 +13,6 @@ export default function Matches() {
     return <>
         <h1>Latest matches</h1>
 
-        <MatchTables matches={matches.data?.data!}/>
+        <MatchTables matches={matches.data!.data}/>
     </>
 }

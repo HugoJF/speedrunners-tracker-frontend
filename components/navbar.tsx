@@ -29,6 +29,10 @@ export const Navbar = () => {
         return <>Loading...</>;
     }
 
+    if (!sprints.data?.data) {
+        return <>Loading...</>
+    }
+
     return <>
         <MatchForm
             open={modalOpen}

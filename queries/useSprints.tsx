@@ -4,7 +4,7 @@ import {useQuery} from "@tanstack/react-query";
 import {http} from "@/http/http";
 
 function fetchSprints() {
-    return http.get('/sprints')
+    return http.get<Sprint[]>('/sprints')
 }
 
 export const useSprints = () => {
