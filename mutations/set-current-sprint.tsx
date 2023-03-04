@@ -1,8 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {index} from "@/http";
+import {http} from "@/http/http";
 
 function setCurrentSprint(id: string) {
-    return index.post('/sprints/current', {id})
+    return http.post('/sprints/current', {id})
 }
 
 export const useSetCurrentSprint = () => {

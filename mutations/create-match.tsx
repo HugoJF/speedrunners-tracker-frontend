@@ -1,8 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {index} from "@/http";
+import {http} from "@/http/http";
 
 function createMatch(data: MatchProperties) {
-    return index.post('/matches', data)
+    return http.post('/matches', data)
 }
 
 export const useCreateMatch = () => {

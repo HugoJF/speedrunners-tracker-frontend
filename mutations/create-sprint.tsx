@@ -1,8 +1,8 @@
 import {useMutation, useQueryClient} from "@tanstack/react-query";
-import {index} from "@/http";
+import {http} from "@/http/http";
 
 function createSprint(data: SprintProperties) {
-    return index.post('/sprints', data)
+    return http.post('/sprints', data)
 }
 
 export const useCreateSprint = () => {

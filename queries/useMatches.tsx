@@ -1,11 +1,10 @@
 'use client'
 
 import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
+import {http} from "@/http/http";
 
 function fetchMatches(map?: string) {
-    return axios.get<Match[]>('/matches', {
-        baseURL: 'http://localhost:9000',
+    return http.get<Match[]>('/matches', {
         params: map ? {map} : {}
     })
 }

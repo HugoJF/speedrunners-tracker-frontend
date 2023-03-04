@@ -1,12 +1,10 @@
 'use client'
 
 import {useQuery} from "@tanstack/react-query";
-import axios from "axios";
+import {http} from "@/http/http";
 
 function fetchCurrentSprint() {
-    return axios.get<Sprint>('/sprints/current', {
-        baseURL: 'http://localhost:9000',
-    })
+    return http.get<Sprint>('/sprints/current')
 }
 
 export const useCurrentSprint = () => {
