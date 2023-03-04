@@ -6,6 +6,7 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: true,
   experimental: {
     appDir: true,
   },
@@ -14,5 +15,5 @@ const nextConfig = {
 module.exports = withSentryConfig(
   nextConfig,
   { silent: true },
-  { hideSourcemaps: true },
+  { hideSourcemaps: false },
 );
