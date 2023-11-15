@@ -19,16 +19,19 @@ type SprintProperties = {
 type Sprint = SprintComputed & SprintProperties;
 
 type MatchComputed = HasId & Timestamps;
-type MatchProperties = {
-    sprint_id: string;
+type MatchEditableProperties = {
     map: string; // TODO type
     p1_score: number;
     p2_score: number;
 }
+type MatchReadonlyProperties = {
+    sprint_id: string;
+}
+type MatchProperties = MatchEditableProperties & MatchReadonlyProperties;
 type Match = MatchComputed & MatchProperties;
 
 interface ModalProps {
-    open?: boolean;
+    visible?: boolean;
     onClose?: () => void;
 }
 

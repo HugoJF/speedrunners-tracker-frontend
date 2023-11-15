@@ -12,7 +12,7 @@ type Props = ModalProps & {
 }
 
 export const Modal: FC<Props> = ({
-    open = false,
+    visible = false,
     onClose,
     header,
     children,
@@ -21,7 +21,7 @@ export const Modal: FC<Props> = ({
         onClose?.();
     }
 
-    if (!open) {
+    if (!visible) {
         return null;
     }
 

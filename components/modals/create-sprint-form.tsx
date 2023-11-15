@@ -20,7 +20,7 @@ type FormData = {
     goal: number;
 }
 
-export const SprintForm: FC<Props> = ({open, onClose}) => {
+export const CreateSprintForm: FC<Props> = ({visible, onClose}) => {
     const [p1Name, setP1Name] = useLocalStorage('p1_name', '');
     const [p2Name, setP2Name] = useLocalStorage('p2_name', '');
     const [goal, setGoal] = useLocalStorage('goal', '');
@@ -50,7 +50,7 @@ export const SprintForm: FC<Props> = ({open, onClose}) => {
     }
 
     return <Modal
-        open={open}
+        visible={visible}
         header="Creating new sprint"
         onClose={onClose}
     >

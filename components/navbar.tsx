@@ -10,14 +10,15 @@ import Link from "next/link";
 import {usePathname} from "next/navigation";
 import React, {useState} from "react";
 import {useSprints} from "@/queries/useSprints";
-import {MatchForm} from "@/components/modals/match-form";
+import {CreateMatchForm} from "@/components/modals/create-match-form";
 import {Plus} from "react-feather";
+import {useModal} from "@/queries/useModal";
 
 export const Navbar = () => {
     const sprints = useSprints();
     const pathname = usePathname();
     const currentSprint = useCurrentSprint();
-    const [modalOpen, setModalOpen] = useState(false);
+    const modal = useModal();
 
     // TODO improve
     if (sprints.isLoading) {
@@ -26,19 +27,17 @@ export const Navbar = () => {
 
     // TODO improve
     if (currentSprint === undefined) {
-        return <>Loading...</>;
+        return <>Loading currentSprint...</>;
     }
 
     if (!sprints.data?.data) {
-        return <>Loading...</>
+        return <>Loading sprints...</>
     }
 
     return <>
-        <MatchForm
-            open={modalOpen}
-            sprints={sprints.data?.data}
+        <CreateMatchForm
+            {...modal.props}
             initialSelectedSprintId={currentSprint.id}
-            onClose={() => setModalOpen(false)}
         />
         <nav className="flex flex-col gap-8 fixed inset-y-0 left-0 w-[16rem] bg-gray-900 text-white shadow-lg">
             <Link href="/" className="block p-8 pb-0">
@@ -55,7 +54,7 @@ export const Navbar = () => {
                     color="primary"
                     size="sm"
                     icon={Plus}
-                    onClick={() => setModalOpen(true)}
+                    onClick={() => modal.open()}
                 >
                     New match
                 </Button>
