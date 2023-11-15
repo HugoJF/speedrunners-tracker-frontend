@@ -4,6 +4,7 @@ import {ButtonGroup} from "@/components/button-group";
 import {Button} from "@/components/button";
 import {useSetCurrentSprint} from "@/mutations/set-current-sprint";
 import {useCurrentSprint} from "@/queries/useCurrentSprint";
+import clsx from "clsx";
 
 type Props = {
     showIndex?: boolean;
@@ -32,7 +33,13 @@ export const SprintTable: FC<Props> = ({sprints, showIndex}) => {
         </thead>
         <tbody>
 
-        {sprints.map((sprint) => (<tr key={sprint.id}>
+        {sprints.map((sprint) => (<tr
+                key={sprint.id}
+                className={clsx({
+                    'bg-blue-100': sprint.p1_score > sprint.p2_score,
+                    'bg-red-100': sprint.p1_score < sprint.p2_score,
+                })}
+            >
                 {showIndex && <td className="text-mono tracking-tight" title={sprint.id}>
                   <Link
                     href={`/sprints/${sprint.id}`}

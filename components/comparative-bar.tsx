@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 type Props = {
-    title: string;
+    title?: string;
     left: string,
     right: string;
     leftScore: number;
@@ -16,7 +16,7 @@ export const ComparativeBar: FC<Props> = ({title, left, leftScore, right, rightS
     return <div>
         <div className="flex justify-between">
             <span className="mt-4">{leftPercent}%</span>
-            <h2 className="text-xl font-medium">{title}</h2>
+            {title && <h2 className="text-xl font-medium">{title}</h2>}
             <span className="mt-4">{rightPercent}%</span>
         </div>
 

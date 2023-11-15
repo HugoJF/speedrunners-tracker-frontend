@@ -1,5 +1,6 @@
 import {FC} from "react";
 import Link from "next/link";
+import clsx from "clsx";
 
 type Props = {
     showIndex?: boolean,
@@ -21,7 +22,13 @@ export const MatchTables: FC<Props> = ({matches, showIndex = false}) => {
         </thead>
         <tbody>
 
-        {matches.map((match, index) => (<tr key={index}>
+        {matches.map((match, index) => (<tr
+                key={index}
+                className={clsx({
+                    'bg-blue-100': match.p1_score > match.p2_score,
+                    'bg-red-100': match.p1_score < match.p2_score,
+                })}
+            >
                 {showIndex && <td>{index + 1}</td>}
                 <td>
                     <Link
