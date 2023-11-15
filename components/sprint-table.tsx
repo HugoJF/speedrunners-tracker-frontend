@@ -41,13 +41,13 @@ export const SprintTable: FC<Props> = ({sprints, showIndex}) => {
                 })}
             >
                 {showIndex && <td className="text-mono tracking-tight" title={sprint.id}>
-                  <Link
-                    href={`/sprints/${sprint.id}`}
-                    className="hover:underline"
-                  >
-                      {/*TODO tail*/}
-                      {sprint.id}
-                  </Link>
+                    <Link
+                        href={`/sprints/${sprint.id}`}
+                        className="hover:underline"
+                    >
+                        {/*TODO tail*/}
+                        {sprint.id}
+                    </Link>
                 </td>}
                 <td>{sprint.name}</td>
                 <td>{sprint.p1_name}</td>
@@ -67,11 +67,11 @@ export const SprintTable: FC<Props> = ({sprints, showIndex}) => {
                             Edit
                         </Button>
                         {sprint.id !== currentSprint?.id && <Button
-                          size="sm"
-                          onClick={() => handleSetCurrentSprint(sprint)}
-                          loading={sprint.id === currentSprint?.id && setCurrentSprint.isLoading}
+                            size="sm"
+                            onClick={() => handleSetCurrentSprint(sprint)}
+                            loading={sprint.id === currentSprint?.id && setCurrentSprint.isLoading}
                         >
-                          Set current
+                            Set current
                         </Button>}
                     </ButtonGroup>
                 </td>
@@ -79,9 +79,9 @@ export const SprintTable: FC<Props> = ({sprints, showIndex}) => {
         ))}
 
         {sprints.length === 0 && <tr>
-          <td colSpan={8} className="text-center">
-            No sprints!
-          </td>
+            <td colSpan={8} className="text-center">
+                No sprints!
+            </td>
         </tr>}
         </tbody>
     </table>

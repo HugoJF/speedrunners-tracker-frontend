@@ -27,8 +27,19 @@ type FormData = {
 // TODO remove
 const scores = [0, 1, 2, 3];
 
-export const MatchForm: FC<Props> = ({sprints, initialSelectedSprintId, open, onClose}) => {
-    const {register, handleSubmit, watch, setValue, formState: {errors}} = useForm<FormData>({
+export const MatchForm: FC<Props> = ({
+    sprints,
+    initialSelectedSprintId,
+    open,
+    onClose
+}) => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        setValue,
+        formState: {errors}
+    } = useForm<FormData>({
         defaultValues: {sprint_id: initialSelectedSprintId}
     });
     const createMatch = useCreateMatch();
@@ -92,18 +103,29 @@ export const MatchForm: FC<Props> = ({sprints, initialSelectedSprintId, open, on
                         <div className="flex justify-between items-center">
                             {/*TODO select for p1 score*/}
                             {/*TODO validation*/}
-                            <Select {...register('p1_score', {valueAsNumber: true, min: 0, max: 3})}>
-                                {scores.map(score => <option key={score} value={score}>{score}</option>)}
+                            <Select {...register('p1_score', {
+                                valueAsNumber: true,
+                                min: 0,
+                                max: 3
+                            })}>
+                                {scores.map(score => <option key={score}
+                                                             value={score}>{score}</option>)}
                             </Select>
                             <h3>
                                 <span>{selectedSprint?.p1_name ?? 'Player 1'}</span>
-                                <span className="mx-3 text-blue-600 font-mono font-bold">vs</span>
+                                <span
+                                    className="mx-3 text-blue-600 font-mono font-bold">vs</span>
                                 <span>{selectedSprint?.p2_name ?? 'Player 2'}</span>
                             </h3>
                             {/*TODO select for p2 score*/}
                             {/*TODO validation*/}
-                            <Select {...register('p2_score', {valueAsNumber: true, min: 0, max: 3})}>
-                                {scores.map(score => <option key={score} value={score}>{score}</option>)}
+                            <Select {...register('p2_score', {
+                                valueAsNumber: true,
+                                min: 0,
+                                max: 3
+                            })}>
+                                {scores.map(score => <option key={score}
+                                                             value={score}>{score}</option>)}
                             </Select>
                         </div>
                         <FieldErrors error={errors.p1_score}/>
@@ -113,7 +135,8 @@ export const MatchForm: FC<Props> = ({sprints, initialSelectedSprintId, open, on
                         <label className="font-medium">Map selection</label>
                         {/*TODO validation*/}
                         <Select {...register('map', {required: true})}>
-                            {Object.entries(maps).map(([key, value]) => <option key={key} value={key}>{value}</option>)}
+                            {Object.entries(maps).map(([key, value]) => <option
+                                key={key} value={key}>{value}</option>)}
                         </Select>
                         <FieldErrors error={errors.map}/>
                     </div>
@@ -121,8 +144,10 @@ export const MatchForm: FC<Props> = ({sprints, initialSelectedSprintId, open, on
                 <ModalFooter>
                     <ButtonGroup>
                         {/*TODO loadnig state*/}
-                        <Button as="button" size="sm" color="secondary" onClick={handleOnClose}>Close</Button>
-                        <Button as="button" size="sm" color="primary" type="submit">Create</Button>
+                        <Button as="button" size="sm" color="secondary"
+                                onClick={handleOnClose}>Close</Button>
+                        <Button as="button" size="sm" color="primary"
+                                type="submit">Create</Button>
                         {/*TODO figure out how to change actions*/}
                         {/*<Button size="sm" color="primary" onClick={handleOnCreateMore}>Create more</Button>*/}
                     </ButtonGroup>

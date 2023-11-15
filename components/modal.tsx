@@ -12,11 +12,11 @@ type Props = ModalProps & {
 }
 
 export const Modal: FC<Props> = ({
-                                     open = false,
-                                     onClose,
-                                     header,
-                                     children,
-                                 }) => {
+    open = false,
+    onClose,
+    header,
+    children,
+}) => {
     function close() {
         onClose?.();
     }

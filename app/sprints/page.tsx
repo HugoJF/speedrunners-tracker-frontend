@@ -29,6 +29,6 @@ export default function Springs() {
             rightScore={p2Rounds}
         />
 
-        <SprintTable sprints={query.data?.data}/>
+        {query.data?.data && <SprintTable sprints={query.data?.data}/>}
     </>
 }

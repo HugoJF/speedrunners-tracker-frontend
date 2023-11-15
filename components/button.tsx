@@ -25,16 +25,16 @@ type Props = AnchorProps | ButtonProps;
 // TODO add red color
 // TODO add hover state for secondary
 export const Button: FC<Props> = ({
-                                      as: Element = 'a',
-                                      color = 'primary',
-                                      size = 'md',
-                                      className,
-                                      disabled = false,
-                                      loading = false,
-                                      icon: Icon,
-                                      children,
-                                      ...props
-                                  }) => {
+    as: Element = 'a',
+    color = 'primary',
+    size = 'md',
+    className,
+    disabled = false,
+    loading = false,
+    icon: Icon,
+    children,
+    ...props
+}) => {
     const rest = omit(props, loading ? ['onClick'] : [])
 
     const primary = color === 'primary';

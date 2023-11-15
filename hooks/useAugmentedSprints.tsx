@@ -22,5 +22,5 @@ export const useAugmentedSprints = () => {
 
     const p2Score = (sprints?.length ?? 0) - p1Score;
 
-    return {query, p1Score, p2Score, p1Rounds, p2Rounds }
+    return {query, p1Score, p2Score, p1Rounds, p2Rounds}
 }

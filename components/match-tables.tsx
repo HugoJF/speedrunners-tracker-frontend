@@ -67,12 +67,12 @@ export const MatchTables: FC<Props> = ({matches, showIndex = false}) => {
         ))}
 
         {matches.length === 0 && <tr>
-          <td
-            className="text-center"
-            colSpan={showIndex ? 7 : 6}
-          >
-            No matches!
-          </td>
+            <td
+                className="text-center"
+                colSpan={showIndex ? 7 : 6}
+            >
+                No matches!
+            </td>
         </tr>}
 
         </tbody>
