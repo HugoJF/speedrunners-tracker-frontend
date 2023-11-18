@@ -1,5 +1,5 @@
 import {RouterProvider} from "react-router-dom";
-import {Providers} from "./pages/providers.tsx";
+import {Providers} from "./providers.tsx";
 import {Suspense} from "react";
 import {router} from "./router.tsx";
 
