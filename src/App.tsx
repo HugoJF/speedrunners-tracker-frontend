@@ -1,7 +1,7 @@
 import {RouterProvider} from "react-router-dom";
-import {Providers} from "./providers.tsx";
 import {Suspense} from "react";
 import {router} from "./router.tsx";
+import {Providers} from "./providers.tsx";
 
 function App() {
     return <Providers>
