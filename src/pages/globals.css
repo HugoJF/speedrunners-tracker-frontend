@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply mb-8 text-3xl font-bold
+}
+
+table {
+    @apply w-full
+}
+
+table {
+    @apply w-full
+}
+
+thead td {
+    @apply p-1 text-sm text-gray-700 font-medium uppercase
+}
+
+tbody td {
+    @apply px-1 py-2 border-t border-gray-200
+}
